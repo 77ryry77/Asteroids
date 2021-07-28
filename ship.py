@@ -2,7 +2,7 @@ from point import Point
 import pygame
 import math
 
-class Shape:
+class Ship:
     def __init__(self, points):
         self.points = points
         self.x = 0
@@ -27,12 +27,12 @@ class Shape:
         return result
 
     def move(self):
-        self.xv += math.cos(self.angle)/50
+        self.xv += math.cos(self.angle)/35
         if self.xv > 2:
             self.xv = 2
         if self.xv < -2:
             self.xv = -2
-        self.yv += math.sin(self.angle)/50
+        self.yv += math.sin(self.angle)/35
         if self.yv > 2:
             self.yv = 2
         if self.yv < -2:
@@ -41,6 +41,15 @@ class Shape:
     def update(self):
         self.x += self.xv
         self.y += self.yv
+
+    def stop(self):
+        self.xv = 0
+        self.yv = 0
+
+    def reset(self):
+        self.stop()
+        self.x = 0
+        self.y = 0
 
     def draw(self, window, color, scale, shiftx, shifty):
         pygame.draw.lines(window, color, True, self.getDrawCords(shiftx, shifty, scale), 3)
