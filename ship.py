@@ -1,4 +1,5 @@
 from point import Point
+from bullet import Bullet
 import pygame
 import math
 
@@ -10,6 +11,7 @@ class Ship:
         self.y = 0
         self.yv = 0
         self.angle = 0
+        self.fireCoolDown = 0
 
     def rotate(self, angle):
         for point in self.points:
@@ -41,6 +43,13 @@ class Ship:
     def update(self):
         self.x += self.xv
         self.y += self.yv
+        if self.fireCoolDown > 0:
+            self.fireCoolDown -= 1
+
+    def shoot(self, bullets):
+        if self.fireCoolDown == 0:
+            bullets.append(Bullet(self.angle, self.x, self.y))
+            self.fireCoolDown = 10
 
     def stop(self):
         self.xv = 0
