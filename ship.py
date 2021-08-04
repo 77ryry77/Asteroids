@@ -64,6 +64,14 @@ class Ship:
         self.y += self.yv
         if self.fireCoolDown > 0:
             self.fireCoolDown -= 1
+        
+        actualX = self.x + WIDTH / 2
+        if actualX > WIDTH or actualX < 0:
+            exit()
+        actualY = self.y + HEIGHT / 2
+        if actualY > HEIGHT or actualY < 0:
+            exit()
+
 
     def shoot(self, bullets):
         if self.fireCoolDown == 0:
@@ -94,3 +102,6 @@ class Ship:
         pygame.draw.lines(window, color, True, self.getDrawCords(scale), 3)
         if self.thrusting:
             pygame.draw.polygon(window, (255, 0, 0), self.getBoosterCords(scale))
+
+booster = [Point(-1.4, .9), Point(-.6, 0), Point(-1.4, -.9), Point(-2.4, -.7), Point(-2.2, -.3), Point(-3, 0), Point(-2.2, .3), Point(-2.4, .7)]
+player = Ship([Point(1.5, 0), Point(-1.5, -1), Point(-.5, 0), Point(-1.5, 1)], booster)

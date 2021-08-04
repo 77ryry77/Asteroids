@@ -2,6 +2,8 @@ import pygame.constants
 from point import Point
 from ship import Ship
 from constants import WIDTH, HEIGHT
+from bullet import bullets
+from ship import player
 import math
 import pygame
 
@@ -13,20 +15,11 @@ pygame.init()
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 
-booster = [Point(-1.4, .9), Point(-.6, 0), Point(-1.4, -.9), Point(-2.4, -.7), Point(-2.2, -.3), Point(-3, 0), Point(-2.2, .3), Point(-2.4, .7)]
-player = Ship([Point(1.5, 0), Point(-1.5, -1), Point(-.5, 0), Point(-1.5, 1)], booster)
-
-
-
-bullets = []
-
 while True:
     pygame.event.get()
     pygame.time.delay(10)
-    window.fill((10, 10, 10))
+
     keys = pygame.key.get_pressed()
-    
-    
     if keys[pygame.K_w]:
         player.move()
     else:
@@ -47,7 +40,7 @@ while True:
         player.reset()
     player.update()
     
-    
+    window.fill((10, 10, 10))
     player.draw(window, (255, 255, 255), 10)
     for b in bullets:
         b.draw(window, (255, 0, 0), 5)
