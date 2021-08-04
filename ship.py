@@ -103,5 +103,5 @@ class Ship:
         if self.thrusting:
             pygame.draw.polygon(window, (255, 0, 0), self.getBoosterCords(scale))
 
-booster = [Point(-1.4, .9), Point(-.6, 0), Point(-1.4, -.9), Point(-2.4, -.7), Point(-2.2, -.3), Point(-3, 0), Point(-2.2, .3), Point(-2.4, .7)]
-player = Ship([Point(1.5, 0), Point(-1.5, -1), Point(-.5, 0), Point(-1.5, 1)], booster)
+booster = [Point(-14, 9), Point(-6, 0), Point(-14, -9), Point(-24, -7), Point(-22, -3), Point(-30, 0), Point(-22, 3), Point(-24, 7)]
+player = Ship([Point(15, 0), Point(-15, -10), Point(-5, 0), Point(-15, 10)], booster)

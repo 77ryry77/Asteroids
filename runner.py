@@ -1,19 +1,16 @@
 import pygame.constants
-from point import Point
-from ship import Ship
+import pygame
+import math
 from constants import WIDTH, HEIGHT
 from bullet import bullets
+from asteroid import Asteroid, asteroids
+import asteroid
 from ship import player
-import math
-import pygame
 
+asteroids.append(Asteroid())
 
 pygame.init()
-
-
-
 window = pygame.display.set_mode((WIDTH, HEIGHT))
-
 
 while True:
     pygame.event.get()
@@ -34,6 +31,9 @@ while True:
     for b in bullets:
         b.move()
 
+    #for a in asteroids:
+        #a.move()
+
     if keys[pygame.K_s]:
         player.stop()
     if keys[pygame.K_r]:
@@ -41,9 +41,10 @@ while True:
     player.update()
     
     window.fill((10, 10, 10))
-    player.draw(window, (255, 255, 255), 10)
     for b in bullets:
-        b.draw(window, (255, 0, 0), 5)
-
+        b.draw(window, (255, 0, 0), .5)
+    for a in asteroids:
+        a.draw(window, (0, 40, 60))
+    player.draw(window, (255, 255, 255), 1)
 
     pygame.display.update()

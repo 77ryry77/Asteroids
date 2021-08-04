@@ -1,4 +1,3 @@
-from pygame.constants import HIDDEN
 from point import Point
 import pygame
 import math
@@ -9,7 +8,7 @@ bullets = []
 
 class Bullet:
     def __init__(self, angle, x, y):
-        self.points = [Point(.5, .5), Point(.5, -.5), Point(-.5, -.5), Point(-.5, .5)]
+        self.points = [Point(5, 5), Point(5, -5), Point(-5, -5), Point(-5, 5)]
         self.x = x
         self.y = y
         self.angle = angle
