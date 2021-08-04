@@ -7,15 +7,20 @@ from asteroid import Asteroid, asteroids
 import asteroid
 from ship import player
 
-asteroids.append(Asteroid())
-
 pygame.init()
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
+count = 0
 while True:
     pygame.event.get()
     pygame.time.delay(10)
 
+    if count == 100:
+        asteroids.append(Asteroid())
+        count = 0
+    else:
+        count += 1
+        
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
         player.move()
@@ -31,8 +36,8 @@ while True:
     for b in bullets:
         b.move()
 
-    #for a in asteroids:
-        #a.move()
+    for a in asteroids:
+        a.move()
 
     if keys[pygame.K_s]:
         player.stop()

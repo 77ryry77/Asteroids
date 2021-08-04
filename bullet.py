@@ -1,7 +1,7 @@
 from point import Point
 import pygame
 import math
-from constants import WIDTH, HEIGHT, SPEED
+from constants import WIDTH, HEIGHT, BSPEED
 
 bullets = []
 
@@ -26,8 +26,8 @@ class Bullet:
         return result
 
     def move(self):
-        self.x += math.cos(self.angle) * SPEED
-        self.y += math.sin(self.angle) * SPEED
+        self.x += math.cos(self.angle) * BSPEED
+        self.y += math.sin(self.angle) * BSPEED
 
         actualX = self.x + WIDTH / 2
         if actualX > WIDTH or actualX < 0:
